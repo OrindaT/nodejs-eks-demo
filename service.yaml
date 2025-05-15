@@ -3,12 +3,13 @@ kind: Service
 metadata:
   name: nodejs-service
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
     service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/"
+    service.beta.kubernetes.io/aws-load-balancer-security-groups: "sg-08ad0de0598a711fe"
 spec:
   type: LoadBalancer
   selector:
-    app: nodejs-demo
+    app: nodejs
   ports:
     - protocol: TCP
       port: 80
